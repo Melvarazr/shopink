@@ -1,19 +1,20 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
 {% load static %}
 
 {% block meta %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'css/create_product.css' %}">
-  <title>Home</title>
+  <link rel="stylesheet" href="{% static 'css/edit_product.css' %}">
+  <title>Edit Product</title>
 {% endblock meta %}
 
 {% block content %}
 
 <body>
     <section>
-        <h1>Add New Product</h1>
+        <h1>Edit Product</h1>
+
         <form method="POST">
             {% csrf_token %}
             <table>
@@ -21,7 +22,7 @@
                 <tr>
                     <td></td>
                     <td>
-                        <input type="submit" value="Add Product"/>
+                        <input type="submit" value="Edit Product"/>
                     </td>
                 </tr>
             </table>

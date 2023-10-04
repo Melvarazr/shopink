@@ -1,0 +1,156 @@
+body {
+    background-image: url("https://i.pinimg.com/originals/5c/43/d2/5c43d280ddfbd4a1b4c571874e699f8d.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+section {
+    text-align: center;
+    margin-top: 30px;
+    margin-left: 70px;
+    margin-right: 70px;
+    background-color: transparent;
+    border: 5px solid #ff1493;
+    border-radius: 20px;
+    max-height: fit-content;
+    padding-top: 20px;
+    padding-bottom: 1px;
+    box-shadow: 2px 3px 8px 10px #ff1493;
+}
+
+.name-class {
+    text-align: left;
+    margin-left: 20px;
+}
+
+h1 {
+    color: #ff1493; /* Warna teks judul */
+}
+
+h5 {
+    color: #ff1493; /* Warna teks subjudul */
+}
+
+.table-container {
+    max-width: 100%;
+    overflow-x: auto;
+    border-radius: 20px;
+}
+
+.table-container table {
+    width: 90%;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+}
+
+.table-container th {
+    background-color: #ff69b4; /* Warna latar belakang header tabel */
+    color: white; /* Warna teks header tabel */
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ff69b4;
+    border: 1px solid white;
+}
+
+.table-container td {
+    background-color: #ffc0cb; /* Warna latar belakang sel data tabel */
+    border: 1px solid white;
+    text-align: center;
+    
+}
+
+.table-container th.top-left-table {
+    background-color: #ff69b4;
+    color: #e2edf9;
+    border-radius: 20px 0 0 0;
+}
+
+.table-container th.top-right-table {
+background-color: #ff69b4;
+color: #e2edf9;
+border-radius: 0 20px 0 0;
+}
+
+table tr:last-child td:first-child {
+border-radius: 0 0 0 20px;
+}
+
+table tr:last-child td:last-child {
+border-radius: 0 0 20px 0;
+}
+
+table tr:last-child td {
+background-color: #becddc;
+color: #160323;
+font-weight: 500;
+}  
+
+.action-button {
+    background-color: #ff1493;
+    color: white;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.add-product {
+    background-color: #ff1493; /* Warna latar belakang tombol */
+    color: white; /* Warna teks tombol */
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    width: fit-content;
+    border-radius: 20px;
+}
+
+.add-product:hover {
+    background-color: #ff007f; /* Warna latar belakang tombol saat hover */
+}
+
+.logout-button {
+    background-color: #ff1493; /* Warna latar belakang tombol */
+    color: white; /* Warna teks tombol */
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    width: fit-content;
+    border-radius: 20px;
+}
+
+/* Style for the card-container */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+    margin: 40px;
+    justify-content: center;
+    justify-items: center;
+    padding-bottom: 20px;
+}
+
+/* Style for the card */
+.card-container .card {
+    max-width: 100%;
+    border: 2px solid #ff1493;
+    box-shadow: 2px 3px 8px 10px #ff1493;
+}
+
+/* Style for the card title */
+.card-container .card-title {
+    font-weight: bold;
+    color: #ff007f;
+}
+
+/* Style for the card text */
+.card-container .card-text {
+    color: #555;
+} 
+
+a {
+    text-decoration: none;
+}
+h1 {
+    text-align: center;
+}

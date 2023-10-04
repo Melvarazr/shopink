@@ -1,0 +1,68 @@
+/* edit_product.css */
+
+/* Mengatur warna latar belakang dan font teks utama */
+body {
+    background-image: url("https://i.pinimg.com/originals/11/09/83/110983451564f8d4b840fd7d95b825df.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+}
+
+section {
+    background-color: #f891d0;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 100px;
+    text-align: center;
+    margin-top: 70px;
+    box-shadow: 2px 3px 8px 10px #ff0066;
+    border: 2px solid #ff0066;
+}
+
+/* Mengatur warna judul */
+h1 {
+    color: #ff0066; /* Warna pink terang */
+    text-align: center;
+}
+
+/* Mengatur tampilan tabel form */
+table {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Mengatur warna teks label */
+label {
+    color: #ff3399; /* Warna pink lebih gelap */
+}
+
+/* Mengatur warna teks input dan border input */
+input[type="text"],
+input[type="number"],
+textarea {
+    background-color: #fff; /* Latar belakang putih */
+    border: 2px solid #ff0066; /* Border pink terang */
+    color: #333; /* Warna teks hitam */
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Mengatur warna tombol */
+input[type="submit"] {
+    background-color: #ff0066; /* Warna pink terang */
+    color: #fff; /* Warna teks putih */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Mengatur hover pada tombol */
+input[type="submit"]:hover {
+    background-color: #ff3399; /* Warna pink lebih gelap saat hover */
+}

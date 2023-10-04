@@ -326,3 +326,168 @@ Penerapan cookies sudah dijelaskan dan untuk menampilkan last login, tambahkan k
 Lalu pada main.html tambahkan kode berikut
 
 <h5>Last login session: {{ last_login }}</h5>
+
+
+
+TUGAS 5
+
+1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
+
+    A.Elemen Selector: Memilih elemen dengan nama elemen tertentu. Ini berguna ketika ingin mengubah gaya semua elemen teks paragraf pada halaman web secara seragam.
+
+        p {
+            text-align: center;
+            color: red;
+        }
+
+    B. ID Selector: Memilih elemen dengan ID tertentu yang harus unik dalam satu halaman. Cocok digunakan untuk mengidentifikasi elemen tertentu.
+
+        #para1 {
+            text-align: center;
+            color: red;
+        }
+
+    C. Class Selector: Mengganti gaya elemen dengan class tertentu. Ini berguna saat ingin menerapkan gaya yang sama pada beberapa elemen, tetapi tidak semua elemen dengan tag yang sama.
+
+        .center {
+            text-align: center;
+            color: red;
+        }
+
+    D. Universal Selector: Universal selector akan mempengaruhi semua elemen pada halaman. Ini digunakan ketika ingin mengubah gaya menjadi seragam pada semua elemen halaman.
+
+        * {
+            text-align: center;
+            color: blue;
+        }
+
+    E. Grouping Selector: Mengganti gaya elemen yang berbeda-beda. Kita bisa mendefinisikan gaya elemen yang berbeda-beda tersebut ke dalam satu grup.
+
+        h1, h2, p {
+            text-align: center;
+            color: red;
+        }
+
+
+2.	Jelaskan HTML5 Tag yang kamu ketahui.
+
+    - <table> : Membuat tabel
+    - <td> : Membuat masing-masing item dari tabel
+    - <tr> : Membuat baris tabel
+    - <h1> - <h6> : Membuat heading, h1 paling besar dan penting, h6 paling kecil dan tingkatannya paling kecil
+    - <p> : Membuat paragraf
+    - <div> : Menentukan bagian dalam halaman
+    - <body> : Menentukan badan suatu elemen
+    - <title> : Menentukan judul
+    - <button> : Membuat tombol
+
+
+3.	Jelaskan perbedaan antara margin dan padding.
+
+    A. Margin
+        - Ruang di sekitar suatu elemen dalam HTML
+        - Penggunaan margin memungkinkan kita mengontrol jarak antara suatu elemen dengan elemen-elemen lain dalam halaman HTML
+        - Kita dapat mengatur margin dari berbagai sisi, seperti margin-top, margin-left, margin-right, dan margin-bottom
+        - Contoh:
+
+            section {
+                margin-top: 5px;
+                margin-right: 20px;
+                margin-bottom: 5px;
+                margin-left: 20px;
+            }
+
+    B. Padding
+        - Ruang di dalam elemen HTML, di antara kontennya dan batas elemen itu sendiri. 
+        - Padding berguna untuk mengendalikan jarak antara konten elemen dengan batas elemen tersebut
+        - Padding juga dapat diatur dari berbagai sisi, seperti padding-top, padding-left, padding-right, dan padding-bottom
+        - Contoh:
+
+            section {
+                padding-top: 15px;
+                padding-right: 30px;
+                padding-bottom: 15px;
+                padding-left: 30px;
+            }
+
+    Perbedaan antara margin dan padding terletak pada pengaturan jarak. Margin mengatur jarak di sekitar elemen, sedangkan padding mengatur ruang di dalam elemen antara kontennya dan batas elemen itu sendiri.
+
+
+4. Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+
+    A. Filosofi Desain
+        - Bootstrap: Lebih terstruktur dan konsisten. Memiliki gaya desain yang lebih formal dan dapat lebih mudah diimplementasikan oleh pengembang yang mungkin tidak memiliki latar belakang desain yang kuat.
+        - Tailwind: Lebih fleksibel dan memberikan lebih banyak kebebasan dalam desain. Memungkinkan pengembang untuk menciptakan desain yang lebih unik dan kreatif sesuai dengan preferensi mereka.
+
+    B. Ukuran File
+        - Bootstrap: Memiliki ukuran file yang lebih besar daripada Tailwind karena Bootstrap menyediakan banyak fitur.
+        - Tailwind: Memiliki ukuran file yang lebih kecil daripada Bootstrap karena pendekatan yang lebih modular dan fleksibel dalam penggunaan kelas-kelas CSS.
+
+    C. Kustomisasi
+        - Bootstrap: Menyediakan banyak tema dan template yang dapat mempercepat pengembangan. Namun, kustomisasi yang lebih lanjut bisa menjadi sulit karena memiliki banyak aturan dan struktur yang harus diikuti.
+        - Tailwind: Memungkinkan pengembang lebih kreatif dalam membuat desain. Dengan Tailwind, pengembang dapat menjadi lebih bebas karena mereka dapat membuat kelas-kelas CSS sesuai kebutuhan.
+
+    D. Penggunaan
+        - Bootstrap: Lebih sesuai untuk proyek-proyek yang membutuhkan desain yang konsisten dan dapat diimplementasikan dengan mudah. Maka cocok untuk proyek-dengan tenggat waktu pengembangan yang cepat.
+        - Tailwind: Lebihsesuai untuk proyek-proyek yang menekankan desain yang unik dan kreatif. Maka cocok untuk proyek-proyek yang membutuhkan tingkat kustomisasi yang lebih dalam dan fleksibilitas dalam penggunaan kelas-kelas CSS.
+
+    Sebaiknya menggunakan Bootstrap jika membutuhkan desain yang konsisten dan mudah diimplementasikan, serta membutuhkan waktu pengembangan yang cepat. Sedangkan Tailwind, sebaiknya digunakan jika membutuhkan desain yang lebih unik dan kreatif, serta membutuhkan tingkat kustomisasi yang lebih dalam dan fleksibilitas dalam penggunaan kelas-kelas CSS.
+
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+    Untuk melakukan kustomisasi, saya menggunakan file external CSS dengan Langkah-langkah berikut:
+        - Membuat direktori baru bernama “static” dalam direktori aplikasi main
+        - Membuat folder CSS di dalam direktori “static” yang berisi file-file CSS dari file html yang saya buat sebelumnya
+        - Agar file HTML terhubung dengan file CSS, saya menambahkan kode berikut di setiap berkas HTML:
+        
+            {% load static %}
+
+            {% block meta %}
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="stylesheet" href="{% static 'css/filename.css' %}">
+                <title>Title</title>
+            {% endblock meta %}
+
+    Kemudian, saya melakukan kustomisasi pada page login, register, main, edit_product, dan create_product. Dalam mengubah desain page, saya membagi setiap bagian HTML ke dalam class yang berbeda untuk memungkinkan kustomisasi yang lebih detail. Beberapa command yang sering digunakan adalah padding, margin, width, dan height. Saya juga mengubah background dari HTML dengan menggunakan background-image dan memasukkan link gif dalam file CSS.
+
+    Selanjutnya, saya menambahkan fitur card ke dalam halaman main. Untuk melakukannya, saya menambahkan dan melakukan sedikit memodifikasi potongan kode dari Bootstrap seperti di bawah ini:
+
+        <div class="card-container">
+            {% for product in products %}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <p class="card-text">{{product.price}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    Dalam potongan kode Bootstrap tersebut, elemen card dihubungkan dengan objek products. Sebagai contoh, pada bagian card-title elemennya adalah {{product.name}}, dan pada bagian card-text elemennya adalah {{product.price}}. Setelah menambahkan potongan kode untuk card, saya melakukan kustomisasi lebih lanjut pada card dalam file main.css seperti berikut:
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 20px;
+            margin: 40px;
+            justify-content: center;
+            justify-items: center;
+            padding-bottom: 20px;
+        }
+
+        .card-container .card {
+            max-width: 100%;
+            border: 2px solid #ff1493;
+            box-shadow: 2px 3px 8px 10px #ff1493;
+        }
+
+        .card-container .card-title {
+            font-weight: bold;
+            color: #ff007f;
+        }
+
+        .card-container .card-text {
+            color: #555;
+        }

@@ -1,48 +1,106 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <title>Home</title>
+{% endblock meta %}
 
 {% block content %}
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'main:logout' %}">Logout</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Profile
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">{{name}}</a></li>
+                  <li><a class="dropdown-item" href="#">PBP F</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
     <h1>Welcome to Shopink!</h1>
 
-    <h5>Name:</h5>
-    <p>{{name}}</p>
+    <section>
+        <div class="name-class">
+            <h5>Name:</h5>
+            <p>{{name}}</p>
 
-    <h5>Class:</h5>
-    <p>{{class}}</p>
+            <h5>Class:</h5>
+            <p>{{class}}</p>
+        </div>
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th class="top-left-table">Name</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Date Added</th>
+                    <th class="top-right-table">Action</th>
+                </tr>
 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Description</th>
-        <th>Date Added</th>
-    </tr>
+                {% for product in products %}
+                <tr>
+                    <td>{{product.name}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.description}}</td>
+                    <td>{{product.date_added}}</td>
+                    <td>
+                        <a href="{% url 'main:edit_product' product.pk %}">
+                            <button class="action-button">Edit</button>
+                        </a>
+                        <a href="{% url 'main:delete_product' product.pk %}">
+                            <button class="action-button">Delete</button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
 
-    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+        <br />
 
-    {% for product in products %}
-        <tr>
-            <td>{{product.name}}</td>
-            <td>{{product.price}}</td>
-            <td>{{product.description}}</td>
-            <td>{{product.date_added}}</td>
-        </tr>
-    {% endfor %}
-</table>
+        <a href="{% url 'main:create_product' %}">
+            <button class="add-product">Add New Product</button>
+        </a>
 
-<br />
+        <a href="{% url 'main:logout' %}">
+            <button class="logout-button">Logout</button>
+        </a>
 
-<a href="{% url 'main:create_product' %}">
-    <button>
-        Add New Product
-    </button>
-</a>
+        <div class="card-container">
+            {% for product in products %}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <p class="card-text">{{product.price}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
 
-<a href="{% url 'main:logout' %}">
-    <button>
-        Logout
-    </button>
-</a>
+        <h5>Last Login Session: {{ last_login }}</h5>
+    </section>
 
-<h5>Sesi terakhir login: {{ last_login }}</h5>
+</body>
 
 {% endblock content %}

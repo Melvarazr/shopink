@@ -1,0 +1,67 @@
+/* register.css */
+
+/* Gaya dasar */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("https://wallpapercave.com/wp/wp5023340.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .login {
+    background-color: #f891d0;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 100px;
+    text-align: center;
+    margin-top: 70px;
+  }
+  
+  h1 {
+    color: #ff69b4; /* Warna pink yang menarik */
+  }
+  
+  /* Gaya untuk tombol Daftar */
+  input[type="submit"] {
+    background-color: #ff69b4;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #e854a4; /* Warna pink yang lebih gelap saat dihover */
+  }
+  
+  /* Gaya untuk pesan kesalahan */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul li {
+    color: black;
+    margin-top: 10px;
+  }
+  
+  /* Gaya untuk form */
+  form {
+    text-align: left;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  td {
+    padding: 10px;
+  }  

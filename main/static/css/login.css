@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    background-image: url("https://userstyles.org/style_screenshots/190268_after.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Agar halaman berada di tengah vertikal */
+    width: 100%;
+}
+
+.login {
+    background-color: #ff69b4; /* Warna latar belakang kotak login */
+    border-radius: 10px;
+    width: 400px;
+    height: 300px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Efek bayangan */
+    margin-bottom: 20px;
+}
+
+.login h1 {
+    color: white; /* Warna teks judul login */
+    font-size: 24px;
+}
+
+.inputbox {
+    position: absolute;
+    color: #0b0c50;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-container {
+    width: 100%;
+    padding: 10px;
+    color: black;
+    margin: 10px 0;
+    border: 1px solid #0b0c50;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.login_btn {
+    /* background-color: white; 
+    color: #ff1493; 
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out; */
+    position: relative;
+    width: 100%;
+    background-color: white;
+    color: #ff69b4;
+    font-weight: 600;
+    border: none;
+    padding: 5px 20px;
+    cursor: pointer;
+    border-radius: 40px;
+    font-size: 16px;
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.login_btn:hover {
+    background-color: #ff007f; /* Warna latar belakang tombol saat hover */
+}
+
+.register {
+    position: relative;
+    margin: 200px 0;
+}
+
+.register a {
+    text-decoration: none;
+    color: #ff0084; /* Warna teks tautan */
+}
+
+.register a:hover {
+    text-decoration: underline; /* Garis bawah tautan saat hover */
+    color: white;
+}
