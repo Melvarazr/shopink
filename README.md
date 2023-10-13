@@ -27,7 +27,7 @@ date_added
 price
 amount
 description
-genre
+genre 
 
 E. Di dalam file "views.py" yang berada di direktori aplikasi "main," tambahkan fungsi "show_main" dengan konteks yang berisi nama aplikasi, nama, dan kelas PBP. Pada file "main.html," dapat mengakses isi dari konteks. Misalnya, jika ingin mengambil nama, tuliskan {{name}} di dalam file "main.html."
 
@@ -491,3 +491,238 @@ TUGAS 5
         .card-container .card-text {
             color: #555;
         }
+
+
+
+TUGAS 6
+
+## 1. Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
+
+Asynchronous: Kode dirancang agar dapat tugas-tugas dapat dijalankan secara bersamaan. Saat ada tugas yang membutuhkan waktu, program mampu menjalankan tugas lain tanpa harus menunggu. Program adalah multi-thread, yang berarti program dapat berjalan parallel. Selain itu asynchronous programming itu non-blocking, yang berarti program dapat mengirim banyak request ke server.
+
+Synchronous: Kode dijalankan satu per satu, dan program harus menunggu penyelesaian setiap tugas sebelum melanjutkan ke tugas berikutnya. Ini dapat menjadi lambat jika ada tugas yang memakan waktu. Program adalah single-thread, yang berarti hanya dapat menjalankan satu operasi. Selain itu, synchronous programming itu blocking, yang berarti program hanya dapat mengirim satu request ke server dan harus menunggu request tersebut terjawab oleh server.
+
+## 2. Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+
+Event-driven programming yaitu paradigma pemrograman di mana urutan eksekusi program bergantung pada terjadinya event. Event-driven programming menggunakan event sebagai penentu urutan eksekusi program. Event-driven programming dapat digunakan untuk menangani event yang terjadi dalam aplikasi web. Sebagai contoh, dalam tugas ini, event-driven programming digunakan untuk mengelola event yang terjadi pada aplikasi web, seperti klik tombol, input teks, dan lain-lain.
+
+## 3. Jelaskan penerapan asynchronous programming pada AJAX.
+
+Dalam AJAX, asynchronous programming digunakan untuk mengambil data dari server tanpa perlu memuat ulang halaman web. Dalam asynchronous programming, program mengirimkan permintaan ke server dan melanjutkan eksekusi program tanpa menunggu respon dari server. Saat respon dari server diterima, program menjalankan fungsi atau kode yang telah ditentukan sebelumnya untuk menangani respon tersebut. Melalui penggunaan AJAX, asynchronous programming memungkinkan program untuk mengambil data dari server secara efisien dan responsif, tanpa harus memuat ulang halaman web. Dengan demikian, hal ini meningkatkan pengalaman pengguna menjadi lebih baik dan meningkatkan kinerja aplikasi web secara menyeluruh.
+
+## 4. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+
+Fetch API
+    - Bagian dari JavaScript yang telah terintegrasi ke dalam browser. Oleh karena itu, tidak perlu mengunduh atau mengimpor pustaka tambahan seperti jQuery untuk menggunakannya.
+    - Memiliki ukuran dan kinerja yang lebih ringan. Hal ini cocok dalam pengembangan aplikasi web yang membutuhkan efisiensi dan kecepatan.
+    - Mengembalikan objek Promise yang mempermudah pengelolaan asynchronous code sehingga menjadi lebih mudah dibaca dan dimengerti.
+
+jQuery
+    - Mendukung browser yang lebih lama dan baru, sehingga cocok digunakan dalam beragam jenis browser
+    - Memiliki plugin sangat besar dan kuat yang dapat digunakan untuk menambahkan berbagai fitur dan fungsi ke situs web dengan mudah
+    - Terdapat jQuery UI yang menyediakan komponen antarmuka pengguna yang siap pakai, mempercepat pengembangan antarmuka pengguna.
+
+Pendapat
+    Saya lebih condong untuk menggunakan Fetch API. Fetch API lebih modern, ringan, dan merupakan standar yang direkomendasikan. Ini merupakan pilihan yang baik untuk proyek-proyek baru dan ingin memusatkan perhatian pada pengembangan dengan JavaScript. Selain itu, dengan AJAX dalam memproses request asynchronous dapat lebih mudah diproses di dalam Fetch API.
+
+## 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+I. Mengubah tugas 5 yang telah dibuat sebelumnya menjadi menggunakan AJAX.
+
+    A. AJAX GET
+
+    - Ubah kode tabel data item agar dapat mendukung AJAX GET. Pertama kita harus membuat fungsi pada main.html untuk memanggil tabel, dengan mengubah html tabel menjadi kode berikut:
+
+    <table id="product_table"></table>
+
+    Selain itu untuk memanggil kartu tambahkan juga kode card
+
+    <div id="product_card" class="card-container"></div>
+
+    - Lakukan pengambilan task menggunakan AJAX GET. Buat Fungsi pada views.py untuk membuat fungsi mengambil get product
+
+    @login_required(login_url='/login')
+    def get_product_json(request):
+        product_item = Product.objects.all()
+        return HttpResponse(serializers.serialize('json', product_item))
+
+    Lalu setelah membuat fungsi pada views.py, buatlah routing pada urls.py, import get product json agar dapat di tambahkan, selanjutnya agar bisa dipanggil pada html, tambahkan urlspath dengan kode berikut:
+
+    path('get-product/', get_product_json, name='get_product_json'),
+
+    Setelah menambahkan urls.py, buatlah javascript dengan menambahkan <script> pada main.html dengan menambahkan kode berikut:
+
+    async function getProducts() {
+            return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+        }
+
+B. AJAX POST
+
+    - Buat sebuah tombol yang membuka sebuah modal dengan form untuk menambahkan item. Untuk membuat tombol membuka modal form untuk menambahkan item menambahkannya pada navbar, dengan memanggil:
+
+    <button type="button" class="add-product" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product by AJAX</button>
+
+    Dengan kode modal pada html untuk membuat modal yang nantinya berguna untuk add product:
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form" onsubmit="return false;">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" id="name" name="name"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="col-form-label">Price:</label>
+                            <input type="number" class="form-control" id="price" name="price"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="col-form-label">Description:</label>
+                            <textarea class="form-control" id="description" name="description"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    - Buat fungsi view baru untuk menambahkan item baru ke dalam basis data. Pada file views.py import @crsf_exempt dan menambahkan fungsi add product ajax pada kode:
+
+    @csrf_exempt
+    def add_product_ajax(request):
+        if request.method == 'POST':
+            name = request.POST.get("name")
+            price = request.POST.get("price")
+            description = request.POST.get("description")
+            user = request.user
+
+            new_product = Product(name=name, price=price, description=description, user=user)
+            new_product.save()
+
+            return HttpResponse(b"CREATED", status=201)
+
+        return HttpResponseNotFound()
+
+    - Buat path /create-ajax/ yang mengarah ke fungsi view yang baru kamu buat. Setelah menambahkan fungi add_product_ajax pada path, dengan cara membuka urls.py setelah itu mengimpor add_product_ajax dan menambahkan urlpatterns dengan kode:
+
+    path('create-product-ajax/', add_product_ajax, name='add_product_ajax'),
+
+    - Hubungkan form yang telah kamu buat di dalam modal kamu ke path /create-ajax/. Untuk menghubungkan form dengan path create-ajax buat function addProduct kedalam kode <script>, berikut kodenya:
+
+    function addProduct() {
+            fetch("{% url 'main:add_product_ajax' %}", {
+                method: "POST",
+                body: new FormData(document.querySelector('#form'))
+            }).then(refreshProducts).then(refreshCards)
+
+            document.getElementById("form").reset()
+            return false
+        }
+
+        document.getElementById("button_add").onclick = addProduct
+
+    - Lakukan refresh pada halaman utama secara asinkronus untuk menampilkan daftar item terbaru tanpa reload halaman utama secara keseluruhan. Setelah itu buat fungsi addProduct, tambahkan gungsirefreshproduct untuk tabel dan refreshcard untuk card dengan kode sebagai berikut: Implementasi Tabel:
+
+    async function refreshProducts() {
+            document.getElementById("product_table").innerHTML = ""
+            const products = await getProducts()
+            let htmlString = `<tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Date Added</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>`
+            products.forEach((item) => {
+                htmlString += `\n<tr>
+                <td>${item.fields.name}</td>
+                <td>${item.fields.price}</td>
+                <td>${item.fields.description}</td>
+                <td>${item.fields.date_added}</td>
+                <td>
+                    <a href="/edit-product/${item.pk}" class="add-product no-underline action-button" style="border: 1px solid black; text-decoration:none">
+                        Edit
+                    </a>
+                </td>
+                <td>
+                    <button class="add-product no-underline action-button" style="border: 1px solid black" onclick="delete_product_ajax(${item.pk})">Delete</button>
+                </td>
+            </tr>` 
+            })
+            
+            document.getElementById("product_table").innerHTML = htmlString
+        }
+
+        refreshProducts()
+
+    Implementasi Card:
+
+    async function refreshCards() {
+            document.getElementById("product_table").innerHTML = ""
+            const products = await getProducts()
+            let htmlString = ''
+            products.forEach((item) => {
+                htmlString += `
+            <div class="card-container">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">${item.fields.name}</h5>
+                        <p class="card-text">${item.fields.price}</p>
+                    </div>
+                </div>`
+            })
+            document.getElementById("product_card").innerHTML = htmlString
+
+        }
+        
+        refreshCards()
+
+    - Menambahkan Ajax untuk menghapus Product Tambahkan fungsi delete product ajax pada views.pydengan kode berikut
+
+    @csrf_exempt
+    def remove_product_ajax(request, id):
+        Product.objects.filter(pk=id).delete()
+        return HttpResponseRedirect(reverse("main:show_main"))
+
+    Masukan pada urls.py dengan mengimport remove_product_ajax dan memasukan kode berikut:
+
+    path('remove_product_ajax/<int:id>', remove_product_ajax , name='remove_product_ajax'),
+
+    Setelah itu buat javascript dengan menambahkan kode pada <script> sebagai berikut:
+
+    function delete_product_ajax(ID) {
+            fetch(`/remove_product_ajax/${ID}`, {
+                method: 'DELETE',
+            }).then(refreshProducts).then(cardsProduct)
+            }
+        document.getElementById("button-add").onclick = addProduct
+
+    Untuk memanggilnya pada tabel gunakan kode berikut:
+
+    <button class="add-product no-underline action-button" style="border: 1px solid black" onclick="delete_product_ajax(${item.pk})">Delete</button>
+
+C. Melakukan perintah collectstatic. Gunakan perintah collectstatic untuk memisahkan ke folder staticfiles, pertama tama tambahkan setting.py
+
+STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+Lalu jalankan perintah
+
+python manage.py collectstatic
+
+II. Melakukan add-commit-push ke GitHub.
+
+III. Melakukan deployment ke PaaS PBP Fasilkom UI dan sertakan tautan aplikasi pada file README.md.
+
+DOKKU_APP_NAME = UsernameSSO-tugas. Setelah sudah memastikan bahwa code terbaru, tambahkan Repository secrets yaitu DOKKU_APP_NAME , DOKKU_SERVER_IP , DOKKU_SSH_PRIVATE_KEY. Setelah itu tunggu website terdeploy pada domain pbp.cs.ui.ac.id
